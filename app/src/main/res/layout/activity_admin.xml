@@ -39,7 +39,7 @@
                 android:drawableEnd="@drawable/ic_search_black_24dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
-                android:hint="Search Here.."
+                android:hint="Search using Blood group .."
                 android:textSize="16sp" />
 
 
