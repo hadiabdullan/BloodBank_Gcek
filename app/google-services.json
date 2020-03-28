@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1055872948887",
+    "firebase_url": "https://bloodbank-gcek.firebaseio.com",
+    "project_id": "bloodbank-gcek",
+    "storage_bucket": "bloodbank-gcek.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055872948887:android:ad405c053dbaad4a6a27d2",
+        "android_client_info": {
+          "package_name": "com.hadi123.www.bloodbankgcek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055872948887-oicr6494ehlef10f7hnrhdk7cl2c09ht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hadi123.www.bloodbankgcek",
+            "certificate_hash": "9e26b2bb577f6d3e3be96cbc33eb25892b88b1f2"
+          }
+        },
+        {
+          "client_id": "1055872948887-7o3t1bb3g5no0utr7avlg3v80a9dd41i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBspoFCFVX1wNF638gU5OeVAna6TxOV0QU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055872948887-7o3t1bb3g5no0utr7avlg3v80a9dd41i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

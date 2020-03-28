@@ -1,0 +1,2 @@
+rootProject.name='BloodBank Gcek'
+include ':app'

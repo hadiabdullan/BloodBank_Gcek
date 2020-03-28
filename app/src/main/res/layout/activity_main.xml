@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Bank Gcek"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+           android:layout_gravity="center">
+        </TextView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_vertical"
+            app:cardBackgroundColor="#FBECEC"
+            app:cardCornerRadius="20sp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/username1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hadi Abdulla N"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+                android:textSize="18sp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/emailuser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hadiabdullan97@gmail.com"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="23/05/1997"
+                    android:drawablePadding="10dp"
+
+                    android:drawableLeft="@drawable/ic_date_range_black_24dp"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="8606759953"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+
+                    android:padding="10dp"
+                    android:drawableLeft="@drawable/ic_phone_black_24dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/bloodgroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A+"
+                    android:drawableLeft="@drawable/ic_blood_black_24dp"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="150"
+                    android:drawableLeft="@drawable/ic_height_black_24dp"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="58"
+                    android:drawablePadding="10dp"
+
+                    android:drawableLeft="@drawable/ic_height_black_24dp"
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/donation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="nil"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+
+                    android:drawableLeft="@drawable/ic_donation_black_24dp"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="adreesksdfnjnsfjksjfsnfsfhsfjjsfjsdnfsjsdfn"
+                    android:drawableLeft="@drawable/ic_home_black_24dp"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+
+
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/dept"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ECE-A"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+
+                    android:padding="10dp"
+                    android:drawableLeft="@drawable/ic_book_black_24dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2016"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="10dp"
+                    android:drawableLeft="@drawable/ic_year_black_24dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
