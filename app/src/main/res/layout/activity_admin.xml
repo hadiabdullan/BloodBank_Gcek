@@ -24,34 +24,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
+
             <EditText
-                android:id="@+id/search"
-                android:layout_width="250dp"
-                android:paddingTop="10dp"
+                android:id="@+id/inputsearch"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/search_layout"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:drawableEnd="@drawable/ic_search_black_24dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
-                android:ems="10"
-                android:background="@drawable/search_layout"
-                android:textSize="16sp"
-                android:layout_marginLeft="20dp"
-                android:inputType="textPersonName"
-                android:text="Search Here" />
+                android:hint="Search Here.."
+                android:textSize="16sp" />
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="34dp"
-                android:layout_weight="1"
-                app:srcCompat="@mipmap/ic_search_round" />
 
         </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="50dp"
-            android:id="@+id/resultList"
+            android:id="@+id/recyleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
