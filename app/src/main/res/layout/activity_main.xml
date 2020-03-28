@@ -58,7 +58,6 @@
                     android:layout_height="wrap_content"
                     android:text="23/05/1997"
                     android:drawablePadding="10dp"
-
                     android:drawableLeft="@drawable/ic_date_range_black_24dp"
                     android:textSize="18sp"
                     android:padding="10dp"

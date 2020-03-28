@@ -62,7 +62,7 @@ public class AdminActivity extends AppCompatActivity {
         });
 
     }
-
+   //
     private void LoadData(String data) {
         Query query = DataRef.orderByChild("Bloodgroup").startAt(data).endAt(data + "\uf8ff");
 
@@ -72,6 +72,8 @@ public class AdminActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Users model) {
                 holder.nametext_single.setText(model.getName());
                 holder.bloodtext_sinle.setText(model.getBloodgroup());
+                holder.mobilenumber_single.setText(model.getMobile_number());
+                holder.donation_single.setText(model.getDonation());
             }
 
             @NonNull

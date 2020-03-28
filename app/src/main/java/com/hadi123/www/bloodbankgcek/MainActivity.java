@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 email.setText(mail);
                 String dobe =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("DateofBirth").getValue().toString();
                 dob.setText(dobe);
-                String mobile =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("mobile number").getValue().toString();
+                String mobile =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("mobile_number").getValue().toString();
                 mob.setText(mobile);
                 String bloodg =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("Bloodgroup").getValue().toString();
                 blood.setText(bloodg);

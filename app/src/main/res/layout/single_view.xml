@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/nametext_single1"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:text="Hadi Abdulla N"
         android:textAlignment="textStart"
         android:textSize="18sp"
@@ -18,10 +20,40 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/nametext_single1"
-        android:padding="20dp"
+        android:paddingTop="20dp"
         android:text="O+"
         android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold" />
 
+
+    <TextView
+        android:id="@+id/mobiletext_single1"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nametext_single1"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="10dp"
+        android:text="8606759953"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/donaationtext_single1"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bloodtext_single1"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/mobiletext_single1"
+        android:paddingLeft="2dp"
+        android:paddingBottom="10dp"
+        android:text="23/05/2019"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </RelativeLayout>

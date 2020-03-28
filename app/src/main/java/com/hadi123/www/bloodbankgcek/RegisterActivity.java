@@ -200,7 +200,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             reff.child("users").child(auth.getCurrentUser().getUid()).child("name").setValue(username);
-                            reff.child("users").child(auth.getCurrentUser().getUid()).child("mobile number").setValue(mobile);
+                            reff.child("users").child(auth.getCurrentUser().getUid()).child("mobile_number").setValue(mobile);
                             reff.child("users").child(auth.getCurrentUser().getUid()).child("Password").setValue(password);
                             reff.child("users").child(auth.getCurrentUser().getUid()).child("DateofBirth").setValue(dateOfBirth);
                             reff.child("users").child(auth.getCurrentUser().getUid()).child("height").setValue(height);
