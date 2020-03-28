@@ -5,5 +5,5 @@ The AdminActivity.class is still to be updated.
 
 Testing
 
-You should register your details by clicking register button.Then you can ligin with email and password.
+You should register your details by clicking register button.Then you can login with email and password.
 
