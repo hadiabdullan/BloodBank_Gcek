@@ -111,11 +111,11 @@ public class RegisterActivity extends AppCompatActivity {
             mob.setError("Invalid mobile number");
             errorOccured = true;
         }
-         if (password.isEmpty()) {
+         if (!validatepass(password)) {
             pass.setError("Invalid password");
             errorOccured = true;
         }
-        if (email.isEmpty()) {
+        if (!validateemail(email)) {
             emailid1.setError("Invalid email");
             errorOccured = true;
         }
@@ -165,6 +165,18 @@ public class RegisterActivity extends AppCompatActivity {
         String regEx = "^[0-9]*$";
         return mobNumber.length() == 10 && mobNumber.matches(regEx);
         }
+
+    private boolean validateemail(String emailid){
+        String emlid=emailid;
+        String regem="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String regm1="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+\\.+[a-z]+";
+        return emlid.matches(regem) || emlid.matches(regm1);
+    }
+
+    private boolean validatepass(String pass){
+        String password=pass;
+        return password.length() >= 8;
+    }
 
 
    // }

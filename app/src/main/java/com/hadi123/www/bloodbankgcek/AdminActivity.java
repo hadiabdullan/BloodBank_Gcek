@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -26,6 +27,7 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseRecyclerOptions<Users> options;
     FirebaseRecyclerAdapter<Users,MyViewHolder> adapter;
     DatabaseReference DataRef;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
+        auth=FirebaseAuth.getInstance();
         
         LoadData("");
 
@@ -64,7 +67,8 @@ public class AdminActivity extends AppCompatActivity {
     }
    //
     private void LoadData(String data) {
-        Query query = DataRef.orderByChild("Bloodgroup").startAt(data).endAt(data + "\uf8ff");
+
+        Query query= DataRef.orderByChild("Bloodgroup").startAt(data).endAt(data + "\uf8ff");
 
         options=new FirebaseRecyclerOptions.Builder<Users>().setQuery(query,Users.class).build();
         adapter= new FirebaseRecyclerAdapter<Users, MyViewHolder>(options) {

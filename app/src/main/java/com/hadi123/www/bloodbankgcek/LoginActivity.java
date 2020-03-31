@@ -79,10 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                                 startActivity(intent);
-                                Toast.makeText(getApplicationContext(), "User Logged in Succesfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Admin Logged in Succesfully", Toast.LENGTH_SHORT).show();
 
                             } else {
-                                Toast.makeText(getApplicationContext(), "User could not be logged In", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Admin could not be logged In", Toast.LENGTH_SHORT).show();
 
                             }
                         }
