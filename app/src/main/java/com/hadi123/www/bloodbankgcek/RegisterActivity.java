@@ -3,13 +3,19 @@ package com.hadi123.www.bloodbankgcek;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,14 +26,21 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText name,pass,dob,mob,ht,wt,don,add,yj,emailid1;
+    EditText name,pass,mob,ht,wt,add,yj,emailid1;
+    TextView dob,don;
     FirebaseAuth auth;
     FirebaseUser user;
     DatabaseReference reff;
     Spinner genderText;
     Spinner deptText;
+    Spinner donText;
+    DatePickerDialog dpd,dpd1;
+    Calendar c;
+    ImageButton mBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         name=findViewById(R.id.name);
         pass=findViewById(R.id.passwordcreate);
-        dob=findViewById(R.id.dob);
+        dob=findViewById(R.id.dob1);
         mob=findViewById(R.id.mobilenumber);
         ht=findViewById(R.id.height);
         wt=findViewById(R.id.weight);
@@ -44,6 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
         add=findViewById(R.id.address);
         yj=findViewById(R.id.year);
         emailid1=findViewById(R.id.emailuser);
+        mBtn=findViewById(R.id.imageButton);
+
 
 
         auth=FirebaseAuth.getInstance();
@@ -88,6 +103,58 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+        donText=findViewById(R.id.donation_select_list);
+        String[] donArray={"Never","Add Date.."};
+        ArrayAdapter<String> donadapter= new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,donArray);
+        donText.setAdapter(donadapter);
+        donText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String donat=String.valueOf(donText.getSelectedItem());
+                String donater=donText.getSelectedItem().toString();
+                if(position==0){
+                    donText.setSelection(0);
+                    don.setText(donater);
+                }
+                if(donater.equals("Add Date..")){
+                    c=Calendar.getInstance();
+                    int day = c.get(Calendar.DAY_OF_MONTH);
+                    int month =c.get(Calendar.MONTH);
+                    int year=c.get(Calendar.YEAR);
+                    dpd1=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                            don.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
+
+                        }
+                    },day,month,year);
+                    dpd1.show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        mBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                c=Calendar.getInstance();
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month =c.get(Calendar.MONTH);
+                int year=c.get(Calendar.YEAR);
+                dpd=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                        dob.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
+                    }
+                },day,month,year);
+                dpd.show();
             }
         });
 
@@ -186,6 +253,9 @@ public class RegisterActivity extends AppCompatActivity {
         reff.child("users").child(auth.getCurrentUser().getUid()).child("Bloodgroup").setValue(blood);
         reff.child("users").child(auth.getCurrentUser().getUid()).child("department").setValue(deptmnt);
     }
+
+
+
 
     private void updateUI(){
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
