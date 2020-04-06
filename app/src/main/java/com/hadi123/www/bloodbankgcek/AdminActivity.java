@@ -11,18 +11,27 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
 
-    EditText inputSearch;
+    AutoCompleteTextView inputSearch;
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<Users> options;
     FirebaseRecyclerAdapter<Users,MyViewHolder> adapter;
@@ -39,17 +48,19 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
         auth=FirebaseAuth.getInstance();
-        
+        String[] blood = {"A+","A-","B+","B-","O+","O-","AB+","AB-"};
+        final ArrayAdapter<String> use=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,blood);
         LoadData("");
-
+       inputSearch.setThreshold(1);
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                inputSearch.setAdapter(use);
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
 
             }
 
