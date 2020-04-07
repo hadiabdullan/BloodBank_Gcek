@@ -91,10 +91,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 View dialogView=getLayoutInflater().inflate(R.layout.edittext_layout,null);
-
+                final TextInputEditText field1 = dialogView.findViewById(R.id.httext_content);
+                final TextInputEditText field2 = dialogView.findViewById(R.id.wttext_content);
                 final TextView field=dialogView.findViewById(R.id.edittext_layout);
                 final ImageButton mBtn=dialogView.findViewById(R.id.imageButton);
                 field.setText(don.getText());
+                field1.setText(ht.getText());
+                field2.setText(wt.getText());
+
                 mBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -112,14 +116,22 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 final TextView finalTextView = don;
+                final TextView finalHtView=ht;
+                final TextView finalWtView=wt;
                 new AlertDialog.Builder(MainActivity.this)
                         .setView(dialogView)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String content = field.getText().toString();
+                                String content1 = field1.getText().toString();
+                                String content2 = field2.getText().toString();
+                                reff.child("users").child(auth.getCurrentUser().getUid()).child("weight").setValue(content2);
+                                reff.child("users").child(auth.getCurrentUser().getUid()).child("height").setValue(content1);
                                 reff.child("users").child(auth.getCurrentUser().getUid()).child("Donation").setValue(content);
                                 finalTextView.setText(content);
+                                finalHtView.setText(content1);
+                                finalWtView.setText(content2);
                             }
                         })
                         .setNegativeButton("Cancel", null)
