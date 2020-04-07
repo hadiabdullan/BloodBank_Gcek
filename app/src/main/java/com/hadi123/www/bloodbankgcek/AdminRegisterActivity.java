@@ -103,7 +103,7 @@ public class AdminRegisterActivity extends AppCompatActivity {
             }
         });
         donText=findViewById(R.id.donation_select_list);
-        String[] donArray={"Never","Add Date.."};
+        String[] donArray={"Last Donated Date","Never","Add Date.."};
         ArrayAdapter<String> donadapter= new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,donArray);
         donText.setAdapter(donadapter);
         donText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -113,6 +113,10 @@ public class AdminRegisterActivity extends AppCompatActivity {
                 String donater=donText.getSelectedItem().toString();
                 if(position==0){
                     donText.setSelection(0);
+                    don.setText(donater);
+                }
+                if(position==1){
+                    donText.setSelection(1);
                     don.setText(donater);
                 }
                 if(donater.equals("Add Date..")){

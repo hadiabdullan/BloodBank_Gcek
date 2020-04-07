@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         donText=findViewById(R.id.donation_select_list);
-        String[] donArray={"Never","Add Date.."};
+        String[] donArray={"Last Donated Date","Never","Add Date.."};
         ArrayAdapter<String> donadapter= new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,donArray);
         donText.setAdapter(donadapter);
         donText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -118,14 +118,20 @@ public class RegisterActivity extends AppCompatActivity {
                     donText.setSelection(0);
                     don.setText(donater);
                 }
+                if(position==1){
+                    donText.setSelection(1);
+                    don.setText(donater);
+                }
+
                 if(donater.equals("Add Date..")){
                     c=Calendar.getInstance();
                     int day = c.get(Calendar.DAY_OF_MONTH);
                     int month =c.get(Calendar.MONTH);
                     int year=c.get(Calendar.YEAR);
+
                     dpd1=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
                         @Override
-                        public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                        public void onDateSet(DatePicker datePicker, int mDay, int mMonth, int mYear) {
                             don.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
 
                         }
@@ -150,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                 int year=c.get(Calendar.YEAR);
                 dpd=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                    public void onDateSet(DatePicker datePicker, int mDay, int mMonth, int mYear) {
                         dob.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
                     }
                 },day,month,year);
