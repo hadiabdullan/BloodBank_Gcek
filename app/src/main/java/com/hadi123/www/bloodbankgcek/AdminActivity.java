@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +39,7 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseRecyclerAdapter<Users,MyViewHolder> adapter;
     DatabaseReference DataRef;
     FirebaseAuth auth;
+    FloatingActionButton addinguser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,18 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
         auth=FirebaseAuth.getInstance();
+
+        addinguser=findViewById(R.id.add_fab);
+        addinguser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(AdminActivity.this,AdminRegisterActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
         String[] blood = {"A+","A-","B+","B-","O+","O-","AB+","AB-"};
         final ArrayAdapter<String> use=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,blood);
         LoadData("");
