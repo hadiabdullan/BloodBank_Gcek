@@ -2,10 +2,19 @@ package com.hadi123.www.bloodbankgcek;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +30,8 @@ public class MainNewActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     TextView name,email,dob,mob,blood,ht,wt,don,add,dept,yr;
+    FloatingActionButton callbtn;
+    private static final int REQUEST_CALL=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,5 +86,37 @@ public class MainNewActivity extends AppCompatActivity {
             }
         });
 
+        callbtn=findViewById(R.id.call_fab);
+        callbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makePhoneCall();
+            }
+            
+        });
+
+    }
+
+    private void makePhoneCall() {
+        String number=mob.getText().toString();
+        if(ContextCompat.checkSelfPermission(MainNewActivity.this,
+                Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainNewActivity.this,
+                    new String[]{Manifest.permission.CALL_PHONE},REQUEST_CALL);
+        }else{
+            String dial="tel:" + number;
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode==REQUEST_CALL){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                makePhoneCall();
+            }else{
+                Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
