@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -84,11 +85,20 @@ public class AdminActivity extends AppCompatActivity {
         options=new FirebaseRecyclerOptions.Builder<Users>().setQuery(query,Users.class).build();
         adapter= new FirebaseRecyclerAdapter<Users, MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Users model) {
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull Users model) {
                 holder.nametext_single.setText(model.getName());
                 holder.bloodtext_sinle.setText(model.getBloodgroup());
                 holder.mobilenumber_single.setText(model.getMobile_number());
                 holder.donation_single.setText(model.getDonation());
+
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i=new Intent(AdminActivity.this,MainNewActivity.class);
+                        i.putExtra("UserKey",getRef(position).getKey());
+                        startActivity(i);
+                    }
+                });
             }
 
             @NonNull

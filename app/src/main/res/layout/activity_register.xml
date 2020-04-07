@@ -102,15 +102,17 @@
 
                 <ImageButton
                     android:id="@+id/imageButton"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_above="@+id/dob"
                     android:layout_alignEnd="@+id/dob1"
-                    android:layout_marginTop="2.5dp"
-                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_weight="1"
+                    android:background="#ffffff"
                     android:clickable="true"
                     android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:srcCompat="@drawable/ic_date_range_black_24dp" />
             </RelativeLayout>
 

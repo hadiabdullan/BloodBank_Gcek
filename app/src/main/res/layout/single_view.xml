@@ -1,59 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/nametext_single1"
-        android:layout_width="225dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:text="Hadi Abdulla N"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20sp"
+        android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/bloodtext_single1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_toEndOf="@+id/nametext_single1"
-        android:paddingTop="20dp"
-        android:text="O+"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-    <TextView
-        android:id="@+id/mobiletext_single1"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nametext_single1"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        android:text="8606759953"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nametext_single1"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="Hadi Abdulla N"
+                android:textAlignment="textStart"
+                android:textColor="#020202"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/donaationtext_single1"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bloodtext_single1"
-        android:layout_alignParentBottom="false"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="6dp"
-        android:layout_toEndOf="@+id/mobiletext_single1"
-        android:paddingLeft="2dp"
-        android:paddingBottom="10dp"
-        android:text="23/05/2019"
-        android:textAlignment="textEnd"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/mobiletext_single1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nametext_single1"
+                android:layout_alignParentBottom="false"
+                android:layout_marginTop="19dp"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                android:drawablePadding="5dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="10dp"
+                android:text="8606759953"
+                android:textAlignment="textStart"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/donaationtext_single1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nametext_single1"
+                android:layout_alignParentBottom="false"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_donation_black_24dp"
+                android:layout_toEndOf="@+id/mobiletext_single1"
+                android:paddingLeft="2dp"
+                android:drawablePadding="5dp"
+                android:paddingBottom="10dp"
+                android:text="23/05/2019"
+                android:textAlignment="textEnd"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bloodtext_single1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:text="O+"
+                android:textAlignment="textStart"
+                android:textColor="#F45F5F"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
