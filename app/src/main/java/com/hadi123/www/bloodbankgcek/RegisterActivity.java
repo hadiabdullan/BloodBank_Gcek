@@ -131,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     dpd1=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
                         @Override
-                        public void onDateSet(DatePicker datePicker, int mDay, int mMonth, int mYear) {
+                        public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
                             don.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
 
                         }
@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                 int year=c.get(Calendar.YEAR);
                 dpd=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datePicker, int mDay, int mMonth, int mYear) {
+                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
                         dob.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
                     }
                 },day,month,year);

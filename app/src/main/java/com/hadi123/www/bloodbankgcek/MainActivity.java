@@ -1,11 +1,20 @@
 package com.hadi123.www.bloodbankgcek;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -14,12 +23,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reff;
     FirebaseAuth auth;
     FirebaseUser user;
     TextView name,email,dob,mob,blood,ht,wt,don,add,dept,yr;
+    FloatingActionButton editbtn;
+    Calendar c;
+    DatePickerDialog dpd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +86,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        editbtn=findViewById(R.id.edit_fab);
+        editbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View dialogView=getLayoutInflater().inflate(R.layout.edittext_layout,null);
+
+                final TextView field=dialogView.findViewById(R.id.edittext_layout);
+                final ImageButton mBtn=dialogView.findViewById(R.id.imageButton);
+                field.setText(don.getText());
+                mBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        c= Calendar.getInstance();
+                        int day = c.get(Calendar.DAY_OF_MONTH);
+                        int month =c.get(Calendar.MONTH);
+                        int year=c.get(Calendar.YEAR);
+                        dpd=new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                                field.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
+                            }
+                        },day,month,year);
+                        dpd.show();
+                    }
+                });
+                final TextView finalTextView = don;
+                new AlertDialog.Builder(MainActivity.this)
+                        .setView(dialogView)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String content = field.getText().toString();
+                                reff.child("users").child(auth.getCurrentUser().getUid()).child("Donation").setValue(content);
+                                finalTextView.setText(content);
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .setCancelable(false)
+                        .create()
+                        .show();
+            }
+        });
 
     }
 }
