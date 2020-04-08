@@ -103,7 +103,7 @@ public class AdminRegisterActivity extends AppCompatActivity {
             }
         });
         donText=findViewById(R.id.donation_select_list);
-        String[] donArray={"Last Donated Date","Never","Add Date.."};
+        String[] donArray={"Never","Add Date.."};
         ArrayAdapter<String> donadapter= new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,donArray);
         donText.setAdapter(donadapter);
         donText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -115,10 +115,7 @@ public class AdminRegisterActivity extends AppCompatActivity {
                     donText.setSelection(0);
                     don.setText(donater);
                 }
-                if(position==1){
-                    donText.setSelection(1);
-                    don.setText(donater);
-                }
+
                 if(donater.equals("Add Date..")){
                     c=Calendar.getInstance();
                     int day = c.get(Calendar.DAY_OF_MONTH);

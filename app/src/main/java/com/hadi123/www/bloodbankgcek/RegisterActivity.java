@@ -106,22 +106,21 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         donText=findViewById(R.id.donation_select_list);
-        String[] donArray={"Last Donated Date","Never","Add Date.."};
+        String[] donArray={"Never","Add Date.."};
         ArrayAdapter<String> donadapter= new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,donArray);
         donText.setAdapter(donadapter);
         donText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String donat=String.valueOf(donText.getSelectedItem());
                 String donater=donText.getSelectedItem().toString();
                 if(position==0){
                     donText.setSelection(0);
                     don.setText(donater);
                 }
-                if(position==1){
+               /* if(position==1){
                     donText.setSelection(1);
                     don.setText(donater);
-                }
+                }*/
 
                 if(donater.equals("Add Date..")){
                     c=Calendar.getInstance();
