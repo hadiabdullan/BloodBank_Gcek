@@ -142,4 +142,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Warning")
+                .setMessage("Are you sure that you want to logout?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        logout();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .create()
+                .show();
+    }
+    private void logout() {
+        finishAffinity();
+        System.exit(0);
+    }
 }
