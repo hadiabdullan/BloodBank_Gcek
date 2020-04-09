@@ -325,7 +325,7 @@
                 android:focusable="true"
                 android:background="@xml/btn_login"
                 android:layout_gravity="center"
-                android:text="Register"
+                android:text="Add User"
                 android:textColor="#ffffff"/>
 
 

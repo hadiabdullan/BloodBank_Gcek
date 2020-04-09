@@ -42,7 +42,7 @@ public class AdminRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_admin_register);
 
         name=findViewById(R.id.name);
         pass=findViewById(R.id.passwordcreate);

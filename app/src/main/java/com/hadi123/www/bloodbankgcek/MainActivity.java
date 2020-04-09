@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton editbtn;
     Calendar c;
     DatePickerDialog dpd;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         reff=FirebaseDatabase.getInstance().getReference().getRoot();
+
+        progressDialog=new ProgressDialog(MainActivity.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 add.setText(addd);
                 String yj =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("yearOfJoin").getValue().toString();
                 yr.setText(yj);
+
+                progressDialog.dismiss();
 
             }
 

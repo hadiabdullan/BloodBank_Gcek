@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FloatingActionButton addinguser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +67,12 @@ public class AdminActivity extends AppCompatActivity {
 
 
 
+
+
         String[] blood = {"A+","A-","B+","B-","O+","O-","AB+","AB-"};
         final ArrayAdapter<String> use=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,blood);
         LoadData("");
+
        inputSearch.setThreshold(1);
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -88,6 +93,8 @@ public class AdminActivity extends AppCompatActivity {
                 }
                 else{
                     LoadData("");
+
+
                 }
             }
         });
@@ -95,6 +102,7 @@ public class AdminActivity extends AppCompatActivity {
     }
    //
     private void LoadData(String data) {
+
 
         Query query= DataRef.orderByChild("Bloodgroup").startAt(data).endAt(data + "\uf8ff");
 
@@ -126,6 +134,8 @@ public class AdminActivity extends AppCompatActivity {
         };
         adapter.startListening();
         recyclerView.setAdapter(adapter);
+
+
     }
 
     @Override
