@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -43,7 +46,7 @@ public class AdminActivity extends AppCompatActivity {
     DatabaseReference DataRef;
     FirebaseAuth auth;
     FloatingActionButton addinguser;
-
+    ImageView logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,26 +139,49 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-    }
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                new AlertDialog.Builder(AdminActivity.this)
+                        .setTitle("Warning")
+                        .setMessage("Are you sure that you want to logout?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent=new Intent(AdminActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .create()
+                        .show();
+
+            }
+        });
+
+
+    }
+    boolean doubleBackToExitPressedOnce = false;
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Warning")
-                .setMessage("Are you sure that you want to logout?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        logout();
-                    }
-                })
-                .setNegativeButton("No", null)
-                .create()
-                .show();
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 1000);
     }
-    private void logout() {
-        finishAffinity();
-        System.exit(0);
-    }
+
+
+
 }
