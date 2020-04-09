@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     private void userSignIn(){
         final String username = user.getText().toString();
         final String password = pass.getText().toString();
-        if(username.equals("admin@gmail.com") && password.equals("admin123")) {
+        if(username.equals("admin@gcek.com") && password.equals("principal")) {
             auth.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
