@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     DatePickerDialog dpd;
     ProgressDialog progressDialog;
     ImageView logout;
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,17 +121,26 @@ public class MainActivity extends AppCompatActivity {
                 mBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        c= Calendar.getInstance();
-                        int day = c.get(Calendar.DAY_OF_MONTH);
-                        int month =c.get(Calendar.MONTH);
-                        int year=c.get(Calendar.YEAR);
-                        dpd=new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+                        Calendar c = Calendar.getInstance();
+                        int currentyear = c.get(Calendar.YEAR);
+                        int currentMonth = c.get(Calendar.MONTH);
+                        int currentDay = c.get(Calendar.DAY_OF_MONTH);
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
-                                field.setText(mDay+"/" + (mMonth+1) +"/" +mYear);
+                            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                                Calendar c = Calendar.getInstance();
+                                c.set(Calendar.YEAR, year);
+                                c.set(Calendar.MONTH, monthOfYear);
+                                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                String formattedDate = df.format(c.getTime());
+                                field.setText(formattedDate);
+
+                                df = new SimpleDateFormat("dd/MM/yyyy");
+                                date = df.format(c.getTime());
                             }
-                        },day,month,year);
-                        dpd.show();
+                        },currentyear,currentMonth,currentDay);
+                        datePickerDialog.show();
                     }
                 });
                 final TextView finalTextView = don;
