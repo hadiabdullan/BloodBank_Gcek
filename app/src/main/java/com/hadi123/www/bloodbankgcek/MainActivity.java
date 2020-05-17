@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
                 add.setText(addd);
                 String yj =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("yearOfJoin").getValue().toString();
                 yr.setText(yj);
+                String deprt =dataSnapshot.child("users").child(auth.getCurrentUser().getUid()).child("department").getValue().toString();
+                dept.setText(deprt);
+
+
 
                 progressDialog.dismiss();
 

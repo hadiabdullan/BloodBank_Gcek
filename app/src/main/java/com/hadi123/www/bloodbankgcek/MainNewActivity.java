@@ -91,6 +91,8 @@ public class MainNewActivity extends AppCompatActivity {
                     add.setText(addd);
                     String yj = dataSnapshot.child("yearOfJoin").getValue().toString();
                     yr.setText(yj);
+                    String deprt =dataSnapshot.child("department").getValue().toString();
+                    dept.setText(deprt);
                 }
             }
 

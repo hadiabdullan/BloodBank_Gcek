@@ -11,6 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notifications_active_black_24dp" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
         <activity android:name=".AdminRegisterActivity"></activity>
         <activity android:name=".MainNewActivity" />
         <activity android:name=".AdminActivity" />
